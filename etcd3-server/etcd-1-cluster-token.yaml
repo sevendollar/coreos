@@ -33,6 +33,14 @@ storage:
           options:
             - -L
             - ROOT
+#  files:
+#    - path: /home/jeffl/file1
+#      filesystem: filesystem1
+#      contents:
+#        remote:
+#          url: https://raw.github.com/sevendollar/coreos/master/etcd3-server
+#      mode: 0644
+
 networkd:
   units:
     - name: static.network
@@ -42,18 +50,17 @@ networkd:
 
         [Network]
         DNS=8.8.8.8
-        Address=10.5.1.203/24
+        Address=10.5.1.201/24
         Gateway=10.5.1.254
 
 etcd:
   version: 3.2.0
-  name: etcd-3
+  name: etcd-1
   data_dir: /var/lib/etcd
-  advertise_client_urls: http://10.5.1.203:2379
-  initial_advertise_peer_urls: http://10.5.1.203:2380
+  advertise_client_urls: http://10.5.1.201:2379
+  initial_advertise_peer_urls: http://10.5.1.201:2380
   listen_client_urls: http://0.0.0.0:2379
-  listen_peer_urls: http://10.5.1.203:2380
-  discovery: https://discovery.etcd.io/cf28420d352ca9160dad451f6b9a10f7
-#  initial_cluster: etcd-1=http://10.5.1.201:2380,etcd-2=http://10.5.1.202:2380,etcd-3=http://10.5.1.203:2380
-#  initial_cluster_token: mytoken
-#  initial_cluster_state: new
+  listen_peer_urls: http://10.5.1.201:2380
+  initial_cluster: etcd-1=http://10.5.1.201:2380,etcd-2=http://10.5.1.202:2380,etcd-3=http://10.5.1.203:2380
+  initial_cluster_token: mytoken
+  initial_cluster_state: new
