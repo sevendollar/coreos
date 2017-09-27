@@ -1,0 +1,9 @@
+{
+  "id": "coreos-tree",
+  "name": "coreos for tree",
+  "profile": "coreos-tree",
+  "selector": {
+    "mac": "00:50:56:af:8b:ca",
+    "os": "installed"
+  }
+}

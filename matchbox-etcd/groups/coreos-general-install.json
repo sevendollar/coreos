@@ -1,0 +1,8 @@
+{
+  "id": "coreos",
+  "name": "coreos",
+  "profile": "coreos-general",
+  "selector": {
+    "os": "installed"
+  }
+}

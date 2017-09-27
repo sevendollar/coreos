@@ -58,6 +58,18 @@ storage:
         remote:
           url: http://10.7.12.65:32771/server-key.pem
       mode: 0644
+    - filesystem: filesystem1
+      path: /etc/ssl/certs/client-key.pem
+      contents:
+        remote:
+          url: http://10.7.12.65:32771/client-key.pem
+      mode: 0644
+    - filesystem: filesystem1
+      path: /etc/ssl/certs/client.pem
+      contents:
+        remote:
+          url: http://10.7.12.65:32771/client.pem
+      mode: 0644
 
 networkd:
   units:
@@ -102,3 +114,14 @@ etcd:
   peer_cert_file: /etc/ssl/certs/server.pem
   peer_key_file: /etc/ssl/certs/server-key.pem
   auto_compaction_retention: 1
+
+update:
+  group: stable
+locksmith:
+  reboot_strategy: etcd-lock
+  window_start: Sun 1:00
+  window_length: 2h
+#  etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
+#  etcd_cafile: /etc/ssl/certs/ca.pem
+#  etcd_certfile: /etc/ssl/certs/client.pem
+#  etcd_keyfile: /etc/ssl/certs/client-key.pem

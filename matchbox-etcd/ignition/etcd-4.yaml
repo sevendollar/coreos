@@ -32,7 +32,7 @@ storage:
     - filesystem: filesystem1
       path: /etc/hostname
       contents:
-        inline: etcd-2
+        inline: etcd-4
       mode: 0420
 #    - filesystem: filesystem1
 #      path: /etc/hosts
@@ -58,18 +58,6 @@ storage:
         remote:
           url: http://10.7.12.65:32771/server-key.pem
       mode: 0644
-    - filesystem: filesystem1
-      path: /etc/ssl/certs/client-key.pem
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/client-key.pem
-      mode: 0644
-    - filesystem: filesystem1
-      path: /etc/ssl/certs/client.pem
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/client.pem
-      mode: 0644
 
 networkd:
   units:
@@ -81,21 +69,29 @@ networkd:
         [Network]
         DNS=10.5.15.106
         Domains=cvl.com.tw
-        Address=10.5.1.202/24
+        Address=10.5.1.204/24
         Gateway=10.5.1.254
 
 etcd:
   version: 3.2.0
-  name: etcd-2
+  name: etcd-4
   data_dir: /var/lib/etcd
-  advertise_client_urls: https://10.5.1.202:2379
-  initial_advertise_peer_urls: https://10.5.1.202:2380
+  advertise_client_urls: https://10.5.1.204:2379
+  initial_advertise_peer_urls: https://10.5.1.204:2380
   listen_client_urls: https://0.0.0.0:2379
-  listen_peer_urls: https://10.5.1.202:2380
+  listen_peer_urls: https://10.5.1.204:2380
 #  discovery: https://discovery.etcd.io/8865a4e3fde9d6dca0d74628a2536998
-  initial_cluster: etcd-1=https://10.5.1.201:2380,etcd-2=https://10.5.1.202:2380,etcd-3=https://10.5.1.203:2380
-  initial_cluster_token: mytoken
-  initial_cluster_state: new
+  initial_cluster: etcd-1=https://10.5.1.201:2380,etcd-2=https://10.5.1.202:2380,etcd-3=https://10.5.1.203:2380,etcd-4=https://10.5.1.204:2380
+  initial_cluster_state: existing
+  client_cert_auth: true
+  trusted_ca_file: /etc/ssl/certs/ca.pem
+  cert_file: /etc/ssl/certs/server.pem
+  key_file: /etc/ssl/certs/server-key.pem
+  peer_client_cert_auth: true
+  peer_trusted_ca_file: /etc/ssl/certs/ca.pem
+  peer_cert_file: /etc/ssl/certs/server.pem
+  peer_key_file: /etc/ssl/certs/server-key.pem
+  auto_compaction_retention: 1
   client_cert_auth: true
   trusted_ca_file: /etc/ssl/certs/ca.pem
   cert_file: /etc/ssl/certs/server.pem
@@ -112,7 +108,3 @@ locksmith:
   reboot_strategy: etcd-lock
   window_start: Sun 1:00
   window_length: 2h
-#  etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
-#  etcd_cafile: /etc/ssl/certs/ca.pem
-#  etcd_certfile: /etc/ssl/certs/client.pem
-#  etcd_keyfile: /etc/ssl/certs/client-key.pem

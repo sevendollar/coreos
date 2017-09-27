@@ -1,0 +1,30 @@
+---
+passwd:
+  users:
+    - name: core
+      password_hash: "$1$linux$Jkofsu0Cak8oAy8lOAOPB0"
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAP6OO9UCi9a4KJZ4ikZFmxmk9IJLSXIeBVBBd/z+hxwH1L42+O6LUimMsVW9f2KS2//2i7BgAJFe93XxXr8EfCC+nTOORFMGP3copkvDp57Kofu+Tfb/DAcSyYPT3K4ilMv/j4CW/RiBgG/YAsSUeEbO+i5S8YolR/CdK0awGx6Q4DcX2yrOECfv+hv2Fq4UyVdaURSo8jtFhD3AfY50eb5G11SWbwqz0wDJV2Xlhb2UykjPEbCwSsYMurU6FYbFlOzRKUs1c5R+OD11dk2uwLSdM6L1ZVcleLo8hsaB0Zw3Pkj1sPxiGHITHGUxr4weUJjlYdTyXaXy9fowBIcS3 jeffl@jumper-amc
+
+storage:
+  filesystems:
+    - name: filesystem1
+      mount:
+        device: /dev/disk/by-partlabel/ROOT
+        format: btrfs
+        create:
+          force: true
+          options:
+            - -L
+            - ROOT
+
+networkd:
+  units:
+    - name: static.network
+      contents: |
+        [Match]
+        Name=ens*
+
+        [Network]
+        DNS=10.5.15.106
+        DHCP=yes

@@ -1,0 +1,9 @@
+{
+  "id": "node4",
+  "name": "etcd Node 4",
+  "profile": "etcd-4",
+  "selector": {
+    "mac": "00:50:56:af:af:6c",
+    "os": "installed"
+  }
+}
