@@ -39,12 +39,12 @@ storage:
       contents:
         inline: etcd-1
       mode: 0420
-    - filesystem: filesystem1
-      path: /etc/hosts
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/hosts
-      mode: 0644
+#    - filesystem: filesystem1
+#      path: /etc/hosts
+#      contents:
+#        remote:
+#          url: http://10.7.12.65:32771/hosts
+#      mode: 0644
     - filesystem: filesystem1
       path: /etc/ssl/certs/ca.pem
       contents:
@@ -72,7 +72,8 @@ networkd:
         Name=ens*
 
         [Network]
-        DNS=8.8.8.8
+        DNS=10.5.15.106
+        Domains=cvl.com.tw
         Address=10.5.1.201/24
         Gateway=10.5.1.254
 
