@@ -35,7 +35,7 @@ storage:
     - filesystem: filesystem1
       path: /etc/hostname
       contents:
-        inline: jumper-shanghai
+        inline: jumper-taiping
       mode: 0420
 
 networkd:
@@ -46,7 +46,7 @@ networkd:
         Name=ens*
 
         [Network]
-        DNS=10.6.1.248
-        Address=10.6.1.65/24
-        Gateway=10.6.1.254
+        DNS=10.5.15.106
+        Address=10.5.1.65/24
+        Gateway=10.5.1.254
 
