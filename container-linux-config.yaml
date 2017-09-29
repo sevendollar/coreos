@@ -31,3 +31,16 @@ storage:
           options:
             - -L
             - ROOT
+
+networkd:
+  units:
+    - name: static.network
+      contents: |
+        [Match]
+        Name=ens*
+
+        [Network]
+        DNS=10.6.1.248
+        Address=10.6.1.65/24
+        Gateway=10.6.1.254
+
