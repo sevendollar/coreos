@@ -31,6 +31,12 @@ storage:
           options:
             - -L
             - ROOT
+  files:
+    - filesystem: filesystem1
+      path: /etc/hostname
+      contents:
+        inline: jumper-shanghai
+      mode: 0420
 
 networkd:
   units:
