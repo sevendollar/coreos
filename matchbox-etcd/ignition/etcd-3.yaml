@@ -71,6 +71,28 @@ storage:
           url: http://10.7.12.65:32771/client.pem
       mode: 0644
 
+systemd:
+  units:
+    - name: flanneld.service
+      dropins:
+        - name: 50-ssl.conf
+          contents: |
+            [Service]
+            Environment=ETCD_SSL_DIR=/etc/ssl/certs
+        - name: 50-network-config.conf
+          contents: |
+            [Service]
+            ExecStartPre=/usr/bin/etcdctl --ca-file=/etc/ssl/certs/ca.pem --key-file=/etc/ssl/certs/client-key.pem --cert-file=/etc/ssl/certs/client.pem --endpoints=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379 set /coreos.com/network/config '{ "Network": "10.1.0.0/16" }'
+    - name: locksmithd.service
+      dropins:
+        - name: 20-locksmithd-config.conf
+          contents: |
+            [Service]
+            Environment="LOCKSMITHD_ETCD_CAFILE=/etc/ssl/certs/ca.pem"
+            Environment="LOCKSMITHD_ETCD_CERTFILE=/etc/ssl/certs/client.pem"
+            Environment="LOCKSMITHD_ETCD_KEYFILE=/etc/ssl/certs/client-key.pem"
+            Environment="LOCKSMITHD_ENDPOINT=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379"
+
 networkd:
   units:
     - name: static.network
@@ -83,6 +105,12 @@ networkd:
         Domains=cvl.com.tw
         Address=10.5.1.203/24
         Gateway=10.5.1.254
+
+flannel:
+  etcd_endpoints: "https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379"
+  etcd_cafile:    /etc/ssl/certs/ca.pem
+  etcd_certfile:  /etc/ssl/certs/client.pem
+  etcd_keyfile:   /etc/ssl/certs/client-key.pem
 
 etcd:
   version: 3.2.0
@@ -112,7 +140,7 @@ locksmith:
   reboot_strategy: etcd-lock
   window_start: Sun 1:00
   window_length: 2h
-#  etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
-#  etcd_cafile: /etc/ssl/certs/ca.pem
-#  etcd_certfile: /etc/ssl/certs/client.pem
-#  etcd_keyfile: /etc/ssl/certs/client-key.pem
+  etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
+  etcd_cafile: /etc/ssl/certs/ca.pem
+  etcd_certfile: /etc/ssl/certs/client.pem
+  etcd_keyfile: /etc/ssl/certs/client-key.pem
