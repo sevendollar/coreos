@@ -100,6 +100,17 @@ systemd:
           contents: |
             [Service]
             Environment="ETCD_SSL_DIR=/etc/ssl/certs"
+    - name: docker.service
+      enable: true
+      dropins:
+        - name: 20-http-proxy.conf
+          contents: |
+            [Unit]
+            Requires=flanneld.service
+            After=flanneld.service
+
+            [Service]
+            Restart=always|on-failure
 
 networkd:
   units:
@@ -121,7 +132,7 @@ flannel:
   etcd_keyfile: /etc/ssl/certs/client-key.pem
 
 etcd:
-  version: 3.2.0
+  version: 3.2.8
   name: etcd-1
   data_dir: /var/lib/etcd
   advertise_client_urls: https://10.5.1.201:2379
@@ -144,6 +155,7 @@ etcd:
 
 update:
   group: stable
+
 locksmith:
   reboot_strategy: etcd-lock
   window_start: Sun 1:00
