@@ -21,7 +21,7 @@ passwd:
 
 storage:
   filesystems:
-    - name: filesystem1
+    - name: root
       mount:
         device: /dev/disk/by-partlabel/ROOT
         format: btrfs
@@ -31,60 +31,277 @@ storage:
             - -L
             - ROOT
   files:
-    - filesystem: filesystem1
+    - filesystem: root
       path: /etc/hostname
-      contents:
-        inline: etcd-3
       mode: 0420
-#    - filesystem: filesystem1
+      contents:
+        inline: etcd-2
+#    - filesystem: root
 #      path: /etc/hosts
 #      contents:
 #        remote:
 #          url: http://10.7.12.65:32771/hosts
 #      mode: 0644
-    - filesystem: filesystem1
+    - filesystem: root
       path: /etc/ssl/certs/ca.pem
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/ca.pem
       mode: 0644
-    - filesystem: filesystem1
+      contents:
+        inline: |
+          -----BEGIN CERTIFICATE-----
+          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
+          mP2clDFBgzLYNsm3zIjoBPAM2aM6ZUOm
+          -----END CERTIFICATE-----
+    - filesystem: root
       path: /etc/ssl/certs/server.pem
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/server.pem
       mode: 0644
-    - filesystem: filesystem1
+      contents:
+        inline: |
+          -----BEGIN CERTIFICATE-----
+          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
+          8qcOIEVP17QB+Nr7jdNak15e
+          -----END CERTIFICATE-----
+    - filesystem: root
       path: /etc/ssl/certs/server-key.pem
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/server-key.pem
       mode: 0644
-    - filesystem: filesystem1
-      path: /etc/ssl/certs/client-key.pem
       contents:
-        remote:
-          url: http://10.7.12.65:32771/client-key.pem
-      mode: 0644
-    - filesystem: filesystem1
+        inline: |
+          -----BEGIN RSA PRIVATE KEY-----
+          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
+          -----END RSA PRIVATE KEY-----
+    - filesystem: root
       path: /etc/ssl/certs/client.pem
-      contents:
-        remote:
-          url: http://10.7.12.65:32771/client.pem
       mode: 0644
+      contents:
+        inline: |
+          -----BEGIN CERTIFICATE-----
+          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
+          yeHXOflcYhlCZz7RRRE9kn/78LDBtXA=
+          -----END CERTIFICATE-----
+    - filesystem: root
+      path: /etc/ssl/certs/client-key.pem
+      mode: 0644
+      contents:
+        inline: |
+          -----BEGIN RSA PRIVATE KEY-----
+          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
+          -----END RSA PRIVATE KEY-----
 
 systemd:
   units:
-    - name: flanneld.service
+    - name: etcd-member.service
       dropins:
-        - name: 50-ssl.conf
+        - name: conf1.conf
           contents: |
             [Service]
             Environment="ETCD_SSL_DIR=/etc/ssl/certs"
+    - name: flanneld.service
+      dropins:
         - name: 50-network-config.conf
           contents: |
+            [Unit]
+            Requires=etcd-member.service
+            After=etcd-member.service
             [Service]
-            ExecStartPre=/usr/bin/etcdctl --ca-file=/etc/ssl/certs/ca.pem --key-file=/etc/ssl/certs/client-key.pem --cert-file=/etc/ssl/certs/client.pem --endpoints=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379 set /coreos.com/network/config '{ "Network": "10.1.0.0/16" }'
+            Environment="ETCD_SSL_DIR=/etc/ssl/certs"
+            ExecStartPre=/usr/bin/etcdctl --ca-file=/etc/ssl/certs/ca.pem --key-file=/etc/ssl/certs/client-key.pem --cert-file=/etc/ssl/certs/client.pem --endpoints=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379 set /coreos.com/network/config '{ "Network": "10.2.0.0/16", "Backend": {"Type": "vxlan"} }'
+            Restart=always|on-failure
+    - name: docker.service
+      enable: true
+      dropins:
+        - name: 40-flannel.conf
+          contents: |
+            [Unit]
+            Requires=flanneld.service
+            After=flanneld.service
+            [Service]
+            Restart=always|on-failure
     - name: locksmithd.service
       dropins:
         - name: 20-locksmithd-config.conf
@@ -94,23 +311,6 @@ systemd:
             Environment="LOCKSMITHD_ETCD_CERTFILE=/etc/ssl/certs/client.pem"
             Environment="LOCKSMITHD_ETCD_KEYFILE=/etc/ssl/certs/client-key.pem"
             Environment="LOCKSMITHD_ENDPOINT=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379"
-    - name: etcd-member.service
-      dropins:
-        - name: conf1.conf
-          contents: |
-            [Service]
-            Environment="ETCD_SSL_DIR=/etc/ssl/certs"
-    - name: docker.service
-      enable: true
-      dropins:
-        - name: 20-http-proxy.conf
-          contents: |
-            [Unit]
-            Requires=flanneld.service
-            After=flanneld.service
-
-            [Service]
-            Restart=always|on-failure
 
 networkd:
   units:
@@ -125,8 +325,6 @@ networkd:
         Address=10.5.1.203/24
         Gateway=10.5.1.254
 
-docker:
-
 flannel:
   etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
   etcd_cafile: /etc/ssl/certs/ca.pem
@@ -135,7 +333,7 @@ flannel:
 
 etcd:
   version: 3.2.8
-  name: etcd-3
+  name: etcd-2
   data_dir: /var/lib/etcd
   advertise_client_urls: https://10.5.1.203:2379
   initial_advertise_peer_urls: https://10.5.1.203:2380
