@@ -35,7 +35,7 @@ storage:
       path: /etc/hostname
       mode: 0420
       contents:
-        inline: etcd-2
+        inline: etcd-3
 #    - filesystem: root
 #      path: /etc/hosts
 #      contents:
@@ -333,7 +333,7 @@ flannel:
 
 etcd:
   version: 3.2.8
-  name: etcd-2
+  name: etcd-3
   data_dir: /var/lib/etcd
   advertise_client_urls: https://10.5.1.203:2379
   initial_advertise_peer_urls: https://10.5.1.203:2380
