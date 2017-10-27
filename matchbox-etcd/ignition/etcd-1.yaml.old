@@ -35,7 +35,7 @@ storage:
       path: /etc/hostname
       mode: 0420
       contents:
-        inline: etcd-2
+        inline: etcd-1
 #    - filesystem: root
 #      path: /etc/hosts
 #      contents:
@@ -43,7 +43,7 @@ storage:
 #          url: http://10.7.12.65:32771/hosts
 #      mode: 0644
     - filesystem: root
-      path: /etc/ssl/certs/etcd-ca.pem
+      path: /etc/ssl/certs/ca.pem
       mode: 0644
       contents:
         inline: |
@@ -81,7 +81,7 @@ storage:
           mP2clDFBgzLYNsm3zIjoBPAM2aM6ZUOm
           -----END CERTIFICATE-----
     - filesystem: root
-      path: /etc/ssl/certs/etcd-server.pem
+      path: /etc/ssl/certs/server.pem
       mode: 0644
       contents:
         inline: |
@@ -122,7 +122,7 @@ storage:
           8qcOIEVP17QB+Nr7jdNak15e
           -----END CERTIFICATE-----
     - filesystem: root
-      path: /etc/ssl/certs/etcd-server-key.pem
+      path: /etc/ssl/certs/server-key.pem
       mode: 0644
       contents:
         inline: |
@@ -178,7 +178,7 @@ storage:
           /fUu04K7iIS5mCWXQL0123F64d7qubULaWEwv5RbISuYYNm3FLpqjIjSWBAyfw==
           -----END RSA PRIVATE KEY-----
     - filesystem: root
-      path: /etc/ssl/certs/etcd-client.pem
+      path: /etc/ssl/certs/client.pem
       mode: 0644
       contents:
         inline: |
@@ -217,7 +217,7 @@ storage:
           yeHXOflcYhlCZz7RRRE9kn/78LDBtXA=
           -----END CERTIFICATE-----
     - filesystem: root
-      path: /etc/ssl/certs/etcd-client-key.pem
+      path: /etc/ssl/certs/client-key.pem
       mode: 0644
       contents:
         inline: |
@@ -272,268 +272,6 @@ storage:
           E7dBrBD3DY+bhKtwlCosefqgty1UzJobKYrDNz61KR2SfVaHbEezF7a6DIGXmR0j
           mcBY/JFHBYcL2CnEngZAfRvMrazRxRh5DqoOtzrORJxKl96IU4B0Sg0Jww==
           -----END RSA PRIVATE KEY-----
-    - filesystem: root
-      path: /etc/kubernetes/ssl/etcd-ca.pem
-      mode: 0644
-      contents:
-        inline: |
-          -----BEGIN CERTIFICATE-----
-          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
-          mP2clDFBgzLYNsm3zIjoBPAM2aM6ZUOm
-          -----END CERTIFICATE-----
-    - filesystem: root
-      path: /etc/kubernetes/ssl/etcd-client.pem
-      mode: 0644
-      contents:
-        inline: |
-          -----BEGIN CERTIFICATE-----
-          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
-          yeHXOflcYhlCZz7RRRE9kn/78LDBtXA=
-          -----END CERTIFICATE-----
-    - filesystem: root
-      path: /etc/kubernetes/ssl/etcd-client-key.pem
-      mode: 0644
-      contents:
-        inline: |
-          -----BEGIN RSA PRIVATE KEY-----
-          MIIJJwIBAAKCAgEA1vrDi7ltXD9jhPPK78eLjWiCavUjt7DmMXOaT3tLeeGu8CSr
-          vNWWLskpMuzx2nIgtnowPk5yp80QT8KhtpO6cMOjSLFQ15ZaODJDaUXmpJY1G8eV
-          5XQXal9LKTHo5tKpNKimW9p1lZ/9IDfMSMXeEcXmAbe9ylC+II05jU+s989FU065
-          cJ2ks1doslYJ7XfDcSLNeeUi4UPr199awf5fbSqOKsHx5SwXsbPYhoYFumx9FyVa
-          1NzwBzmSdMDl1n23UiMWzdN3v281I2IJ1d1kU0EUDBOHnTSNAA1sESvhzQiMwSVG
-          NE92a+ZJsQP0gZdf+cdC1x8vv/Fl198CEv+aznPLQVRCt8pj137lHXPthkAAXfyM
-          uRLCGTg746V5tYsVakOWpopsA1yqqK90542Chz6jgDSOan0eBwKQO+AnD75tgYoA
-          /msb4ftcCFW5Lw8pE+4TLhEVbX/T6kNvPy8gEuG1sFzHkFqrbpIAfH/Vsicme1t4
-          tzSZGXUgio/XSJAhTQc8NYhBN0kAEKv7G2Yu5U4lZwDiQVelGNSQv8L349gBTTO6
-          c1uDUfQLWk0BE76r/QaG6XRh25vW6gWMPSGWd3ZXPM563NAR6Zfif/V6T2BH2mdO
-          Ag3ItMzexahx2wC73l8hmzBv4sjGF037PamIev3UpPHyMgbcOzBaamyXhEECAwEA
-          AQKCAgAD+cc8AkXfetygTNHn9UzDZLdkuvvaHc9kArtL1P/kVSQjFMqIR3rripTU
-          eEVQwOOR/FiADntYVxaCIxtSgRDlnPicE4tnMUSh3WwZuk01pgF9bgd7otX8BZ8i
-          N+YSvrqaWrQY5sVd6wOHYQDKJ76fnYVPatJ7t1qMx4/U6TBNtOuXStFrH784AdnR
-          0n2Egr5+jSI3quEmQVdPOrY2+DlTj4HpkISktFgL1UOf2UKp2+/ESdCQNzXJLGtk
-          9VxKxzBouHVngQ2p4Kie6uU7q0h7saxpPMM5SQuCgL0K5EDcxde0irftp7qM7ElY
-          mLYg32fK+sBlshHz/sbfYyRqrYdzWUd3YBp8847t8vGL3UqxJj7VWBYnYO+n5ndt
-          /Wb4+I9UGIRAoOL7SQ7IggK41m58WlNnIVhaDNCkVxM8ZdNf9V6O75Yz41MV6qXt
-          PLwTj+invrGVEeFIvdfi+fqLLPyxp2Uz+l9MgR12mpXJvnYDawmjV6PgU+jWRrGA
-          //sWK7lnBjg2u8isC5dKbxXOOZ9u3NYSAzF+TUTYyDftxZI2y6nW9se6Y/NkDHj3
-          OKybXpg8jyKpV/JwN3gGGeAk3bIbE9zOwjWF65DL/BtelyQ/QUOuLBk4FIPA15j8
-          r4GfqpP5uAYYDV81Ts/i2o/kwJyRhA0QrMF4KVYMm5BOKjcRQQKCAQEA+T6iiUfH
-          ReIl9zAYfRh6wd4o6i/BzRb5ITbRMJJiEikv4SPNi6rcCtZ1hFQF6QBqa0XYEQAv
-          7XrJQDzZX/v40u7BP67ngIJv6uWF+3C+Z+Kf4C5aMNP4fKsR7Yrmn64hHO25rmPQ
-          mk/zzopXwAUY3STSeAnTItzWbm1wY9oXcy2PCl2edz4Z4VYTKSGNXIX8vSK05Pq5
-          xpF8ImdCR4Pmmm4CY2LvKM1PbsYuKUposqfjC2tYpglX7Oz72JjZS+29TF6MmXxF
-          YldP0ZYyo1N0L7GZ/2lYRm66PuOjS8E4lx0bP0InldH4Z3CarlYnKhrs2nFWkMe9
-          Dv5h7DnuZAN2nQKCAQEA3M5iDVUejdNUMnr5YZeylPL7ALoEIztshq+kcipqYgwx
-          9+tsm/xCWP71UwAsl/pXy9BA562eAtF3RV9TEYlW+VOY+PikiM9BiijN1IOE7wti
-          cv/p9OFucARXhOJpjqCzOnYkZQmVa3QKYjeNdlxz5GWywc2GVRSDVipLtNeP/cgS
-          jlm97n9ZVg/LKT3Rv837GNcBQt+cGvj8yasul1ZXPyGF0yccWFrDLuCyITcU033x
-          jyCIpq6odJDiynhNeqD1vCkjUak7GzODneFG4FaCKFzrHoRPAodQ3rQap2WdTPhB
-          23oMpBEZRFsMlO0MQKCk0bvdoBRL0jmH0QeeJDMA9QKCAQAnfdUjC0x3ti1tzSEU
-          MRzCOwEgmhCK/mja6mSa3ZbMado8Qf//cUMMNI7KOMX29SnndVmW2ADAEARzOTD4
-          FGSIh2v3Oy9THVe+UD+6Z1LEAxRx4OZJdkyY9EIS8T85bc2xV7lj+EzFJoXq4+Cj
-          fCtEXuE6Q9RAYd1YAd8c8yFkDoPrkInbOuu+2HSQv9A2KMSy8xzWayOkYsjYaqQF
-          0NBpB6U5OiPKwz0iwCPwRunv5MoEtS2GoVRdJe+BkjZb4X9s6k48w4P64Pq0qqe7
-          WS2/oNRVs8tY3ZKFBGyLREJDL0lx7Hl5M5u4SA86MExkT3/X3L1qkztRdNzvIP60
-          uhfBAoIBAHoOL49VJQ2a6uj4p0+2LkY9xlgRe2YKXCRbhRiCr8nBGgIEhkX3fKl7
-          ThrydrQP82Y7mRU4GKdQKJEVb3K7K3OpLV86+qCRiJYZliXKCbql3WbaZfYygvyy
-          ubo/+b+Yv1oqolWjpY//VhoSwUTTOFDhkp2kwYPYUf1YZf7yRaswZGmB3AaxKK31
-          DwWeIYrYDtwdRZo0xzL1va6wzJFlbdb87d/Zt8ZzbX9FP9Iyg3WhId1PS5pv47iD
-          uonXVGTcAtpfFyH13TFdGX01YRtzVoF/U4zL8GziZealQjKUbg51ENqEreYneYMa
-          nWrZWjODWXiCU7FAZuUvXg9DGbzC4N0CggEAcWCce4cm1iel3ywry9aPU/zwXNdP
-          PC1cEtrFYWaf4SS2/rDOQ/lnGArZSt3yFEHqPQjyWndX9DDOAw6t/GG/WS+Lyjar
-          pj6Mv0KkVO0PnHlwSZh0ssoIfoDD5CEeb6zOX/h5le3DbdNZwg9iU4veXGO1MYHK
-          3Bu5KlDZq7epyDaIYeKxlWT5Il32xyTVVyWp4qGxdWiF067m2LH9CeTEXZ1KSOUz
-          E7dBrBD3DY+bhKtwlCosefqgty1UzJobKYrDNz61KR2SfVaHbEezF7a6DIGXmR0j
-          mcBY/JFHBYcL2CnEngZAfRvMrazRxRh5DqoOtzrORJxKl96IU4B0Sg0Jww==
-          -----END RSA PRIVATE KEY-----
-    - filesystem: root
-      path: /etc/kubernetes/ssl/ca.pem
-      mode: 0644
-      contents:
-        inline: |
-          -----BEGIN CERTIFICATE-----
-          MIIC9zCCAd+gAwIBAgIJAICsPKbGAU5+MA0GCSqGSIb3DQEBCwUAMBIxEDAOBgNV
-          BAMMB2t1YmUtY2EwHhcNMTcxMDIwMDIyMTE1WhcNNDUwMzA3MDIyMTE1WjASMRAw
-          DgYDVQQDDAdrdWJlLWNhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
-          0mUohBnEC6GCu6m/3pDr6B8qedfvlltHFHawAQWnhAUD0KDRQN3pLBByxOt4sEIT
-          YvI2Jhy9DIjW/iqCYewjLjOMTieGkfD9R2gRmxVYfGjQXhUN6WfL+xgq5iwJKGZe
-          owPUwHJZp3s0C8GGLpnc4aK8wNRP+MtBFqjzZjVgOJ/xJlppfXwzDME05wPQ7WVt
-          iRBwHE1PlCExxv/yP5MLp4hFlNZ1p69V+j8jhdlnju+ZbmddozeIQ6jPbrwfXFnT
-          URfXJtCsAGrCxCDHUONTsKjM0OXd//mR4PsF1v0AUSs6f+EdBYUZBey/JMpVDUm0
-          YGbS42DQ1Hi+Jfx2lGwhDwIDAQABo1AwTjAdBgNVHQ4EFgQU6X0O15AvDv5c7x3h
-          OtzKQjjXubIwHwYDVR0jBBgwFoAU6X0O15AvDv5c7x3hOtzKQjjXubIwDAYDVR0T
-          BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAxkvY4ER5+1ggkKW6R1WmkmACxmXN
-          U0GlwUfoJf4si1p3Rylwa8nrHHew1rhfSSK0vPJ5i45nnP68YZ4EFKoJ+gZrKr3k
-          AfAVAhi75ncRwhDkJTxQLfWO1t3weLKrJWRf+zm4l4Aj0NjcZHfxUnqiihgNNP/p
-          LOjiMTA7HN7hTyQAV6fQYuDrYdgPCvexO+00HxSjaewCoUzK1IIVvlM2JNRKSYKR
-          JuXX7vyoaio9NJ3/UFndAcsEzdIUNFg79XQQ8dkba+e9HZTzmfzur0vIfiFJgo32
-          DH/69lJWIksv5KBi5e7EqRTyP2o5nKoDPUWOgE71qHPkNKQ+4yMz09EPCg==
-          -----END CERTIFICATE-----
-    - filesystem: root
-      path: /etc/kubernetes/ssl/apiserver.pem
-      mode: 0644
-      contents:
-        inline: |
-          -----BEGIN CERTIFICATE-----
-          MIIDPzCCAiegAwIBAgIJAMiDxMxU9zxNMA0GCSqGSIb3DQEBCwUAMBIxEDAOBgNV
-          BAMMB2t1YmUtY2EwHhcNMTcxMDIwMDIyMjQ0WhcNMTgxMDIwMDIyMjQ0WjAZMRcw
-          FQYDVQQDDA5rdWJlLWFwaXNlcnZlcjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
-          AQoCggEBAKojQpMjuszWhiNQv+jgaWcpgV0A/qqzNZT+EyW3R6wBj+hEBZtkNORX
-          P9vAQl+I4UF/DaC5h4NYhGPZk6lt6gTkA8inuY4PzBP/pOw9HwViafEnp8EHxznz
-          ffeFAMNw49pCy/6iYmSPZjJJVd20jS7ENdOlPN+V7OD33kpdCePDxRoXBccdiUxQ
-          0puFYuzStc6Bd+w/FckM5d+bBywvJtgcmI7PUUqUT2yYaLImuQcjGKWyugnA3dvG
-          v/e3Xm3PDJ7w8LXXvClXEfhbtXAq6WOG1B9cXEf8/BP751iIUseLOv5UFCbe+J5z
-          2FF9NH/GecVX5FP81N4RJolV0bdeY20CAwEAAaOBkDCBjTAJBgNVHRMEAjAAMAsG
-          A1UdDwQEAwIF4DBzBgNVHREEbDBqggprdWJlcm5ldGVzghJrdWJlcm5ldGVzLmRl
-          ZmF1bHSCFmt1YmVybmV0ZXMuZGVmYXVsdC5zdmOCJGt1YmVybmV0ZXMuZGVmYXVs
-          dC5zdmMuY2x1c3Rlci5sb2NhbIcECgMAAYcECgUByTANBgkqhkiG9w0BAQsFAAOC
-          AQEAzuXiIpeG2pqiNGCOpRKX15zfsaSScRLgfeX+DXeJSoBdMNUuOHgJABd/OHye
-          3OqNFjxFL6D/G4Tsmj5lWILN+S7EDcwuJw8t4ij1UnS2aZhDExqlRFwGqx4dkFm5
-          6aBUG5NDL3oRW69C91oFe5wdLauSg8hjDZDrgLBDUXlcRWm9Ip6xZxDlWeK3CHAX
-          OOV04pT2y8dnOYel6g27umqSLEQ7FTGKkYQ8jpV9Pmzj9nJvdUPwTnOrHdfMNRuJ
-          1UZl/0g8VPzruUELo81bMuPbpi4eKFnmcJa/PPs2D8psfqRpx+fXRFyUdY+sGW2M
-          ZR4zAb4HPOYPWUmyMU4tsUX9SQ==
-          -----END CERTIFICATE-----
-    - filesystem: root
-      path: /etc/kubernetes/ssl/apiserver-key.pem
-      mode: 0644
-      contents:
-        inline: |
-          -----BEGIN RSA PRIVATE KEY-----
-          MIIEowIBAAKCAQEAqiNCkyO6zNaGI1C/6OBpZymBXQD+qrM1lP4TJbdHrAGP6EQF
-          m2Q05Fc/28BCX4jhQX8NoLmHg1iEY9mTqW3qBOQDyKe5jg/ME/+k7D0fBWJp8Sen
-          wQfHOfN994UAw3Dj2kLL/qJiZI9mMklV3bSNLsQ106U835Xs4PfeSl0J48PFGhcF
-          xx2JTFDSm4Vi7NK1zoF37D8VyQzl35sHLC8m2ByYjs9RSpRPbJhosia5ByMYpbK6
-          CcDd28a/97debc8MnvDwtde8KVcR+Fu1cCrpY4bUH1xcR/z8E/vnWIhSx4s6/lQU
-          Jt74nnPYUX00f8Z5xVfkU/zU3hEmiVXRt15jbQIDAQABAoIBAErS0vaO4hovxjJF
-          0wCBoRlDgab7RwSfZ9MsohMWNakJztYhBC5AtZouXOEx/n6xXg9F5yJmNZioFyEq
-          kOwUcLTR6nAWg15cyC2LYmaawsfFbj4maHpWB2IPGbj/f0R0o2BbvAcyNv9uqU04
-          P1EPlH+avuljZBAYiWKu383oeO73dGR522+ksytdbhSHbBzEMPAR4cly7J0cvnTf
-          +XTVd5qTcZJ59vnFzVnk7ijspgfa2E3qaZx3VvjkCgLGlEQDJvDinx+j3fyBabP7
-          /+BBzJsq3LxmBIDo7TLJJQT8aGbeUNlLICGw4i0SI6S1fQ5WSO2ADPVmthD/pZ44
-          A+kKOCkCgYEA02HYFaCKobl+oVcGjoxqIbq2ySb+VGn6s6GI0Rpa8nuVDxOFqfA9
-          13FKRD75Bm7hIqRIMT0MjO+PX8S+Xi+CqCfu1sjoEethY282HLnNpFC7eRzgpQIK
-          S6THlTOW6jlJ3cEyeMs437nazYl1Fo0sTeL1qY+0O/e5PhZk9Dz1pTcCgYEAzgy/
-          ew2vWwpQyP31Sxxi/D6K+0TmdZbEf9uQlTUizqk1TiHQQgvCgCfonpSDxkXlH7D9
-          wCUk1u8RPutlOqEJe+VBu4q+nxCmBnTGIgcER/702oKOd4bqscBiPjq+qVkiTBB0
-          W486IKgE4dzlBFnaiaVNOmqTx7YG/I8r5PupDnsCgYAvbrtATyAMnkUuCwsrnZKL
-          MwylIpzbcFSTTmIXGeTimJygH29U7NXTrFZP7hmPOf5G+bpBYkOYtIDlqo5VMDAP
-          b7aGd9qrergFygTIeWENyBfpW3OFU2ngA3/NmR/6OxS6MAoVVPTULy5MBNZDUzZn
-          28/oVpjJBBOLPRc2Px+YDQKBgQCveJW8clwKOM+xSuyQ6Xy2eYCcGQH1085FYDNR
-          ja21ts2pWwxiomciAlqMaceKm01TXsPJ1Rf5XiAeqBJOCoPsGcGPt8k75s6sotd0
-          dOtFcK8OQq6WxbOqaj5/5kEmML0Pb9fXfTKwSsXVnur9eJOuMrKA8/Aj3DU48agc
-          2eAPbwKBgGOu07J97MCvUqM3ca28uF/uMs8tZN3SBEI2FeRoqMKHYMCv2SHxSHOZ
-          KHFPG2ioxU3az2xAyPnkum3AHiynHb2oTF6U7ubhvhrzCcT0bw09mDpYq9Z0ZfUr
-          l2p2RyI0y3d60kVjoFYRnyqTdM0kiFu93d+TT/vM70arHnlzRSM6
-          -----END RSA PRIVATE KEY-----
-    - filesystem: root
-      path: /etc/kubernetes/cni/docker_opts_cni.env
-      mode: 0644
-      contents:
-        inline: |
-          DOCKER_OPT_BIP=""
-          DOCKER_OPT_IPMASQ=""
-    - filesystem: root
-      path: /etc/kubernetes/cni/net.d/10-flannel.conf
-      mode: 0644
-      contents:
-        inline: |
-          {
-            "name": "podnet",
-            "type": "flannel",
-            "delegate": {
-              "isDefaultGateway": true
-            }
-          }
-    - filesystem: root
-      path: /etc/kubernetes/manifests/kube-apiserver.yaml
-      mode: 0644
-      contents:
-        remote:
-          url: http://10.7.12.65:32769/kube-apiserver.yaml
-    - filesystem: root
-      path: /etc/kubernetes/manifests/kube-controller-manager.yaml
-      mode: 0644
-      contents:
-        remote:
-          url: http://10.7.12.65:32769/kube-controller-manager.yaml
-    - filesystem: root
-      path: /etc/kubernetes/manifests/kube-scheduler.yaml
-      mode: 0644
-      contents:
-        remote:
-          url: http://10.7.12.65:32769/kube-scheduler.yaml
-    - filesystem: root
-      path: /etc/kubernetes/manifests/kube-proxy.yaml
-      mode: 0644
-      contents:
-        remote:
-          url: http://10.7.12.65:32769/kube-proxy.yaml
-    - filesystem: root
-      path: /etc/systemd/system/kubelet.service
-      mode: 0644
-      contents:
-        remote:
-          url: http://10.7.12.65:32769/kubelet.service
 
 systemd:
   units:
@@ -544,7 +282,6 @@ systemd:
             [Service]
             Environment="ETCD_SSL_DIR=/etc/ssl/certs"
     - name: flanneld.service
-      enable: true
       dropins:
         - name: 50-network-config.conf
           contents: |
@@ -553,7 +290,7 @@ systemd:
             After=etcd-member.service
             [Service]
             Environment="ETCD_SSL_DIR=/etc/ssl/certs"
-            ExecStartPre=/usr/bin/etcdctl --ca-file=/etc/ssl/certs/etcd-ca.pem --key-file=/etc/ssl/certs/etcd-client-key.pem --cert-file=/etc/ssl/certs/etcd-client.pem --endpoints=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379 set /coreos.com/network/config '{ "Network": "10.2.0.0/16", "Backend": {"Type": "vxlan"} }'
+            ExecStartPre=/usr/bin/etcdctl --ca-file=/etc/ssl/certs/ca.pem --key-file=/etc/ssl/certs/client-key.pem --cert-file=/etc/ssl/certs/client.pem --endpoints=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379 set /coreos.com/network/config '{ "Network": "10.2.0.0/16", "Backend": {"Type": "vxlan"} }'
             Restart=always|on-failure
     - name: docker.service
       enable: true
@@ -564,16 +301,15 @@ systemd:
             Requires=flanneld.service
             After=flanneld.service
             [Service]
-            Environment="/etc/kubernetes/cni/docker_opts_cni.env"
             Restart=always|on-failure
     - name: locksmithd.service
       dropins:
         - name: 20-locksmithd-config.conf
           contents: |
             [Service]
-            Environment="LOCKSMITHD_ETCD_CAFILE=/etc/ssl/certs/etcd-ca.pem"
-            Environment="LOCKSMITHD_ETCD_CERTFILE=/etc/ssl/certs/etcd-client.pem"
-            Environment="LOCKSMITHD_ETCD_KEYFILE=/etc/ssl/certs/etcd-client-key.pem"
+            Environment="LOCKSMITHD_ETCD_CAFILE=/etc/ssl/certs/ca.pem"
+            Environment="LOCKSMITHD_ETCD_CERTFILE=/etc/ssl/certs/client.pem"
+            Environment="LOCKSMITHD_ETCD_KEYFILE=/etc/ssl/certs/client-key.pem"
             Environment="LOCKSMITHD_ENDPOINT=https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379"
 
 networkd:
@@ -586,35 +322,35 @@ networkd:
         [Network]
         DNS=10.5.15.106
         Domains=cvl.com.tw
-        Address=10.5.1.202/24
+        Address=10.5.1.201/24
         Gateway=10.5.1.254
 
 flannel:
   etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
-  etcd_cafile: /etc/ssl/certs/etcd-ca.pem
-  etcd_certfile: /etc/ssl/certs/etcd-client.pem
-  etcd_keyfile: /etc/ssl/certs/etcd-client-key.pem
+  etcd_cafile: /etc/ssl/certs/ca.pem
+  etcd_certfile: /etc/ssl/certs/client.pem
+  etcd_keyfile: /etc/ssl/certs/client-key.pem
 
 etcd:
   version: 3.2.8
-  name: etcd-2
+  name: etcd-1
   data_dir: /var/lib/etcd
-  advertise_client_urls: https://10.5.1.202:2379
-  initial_advertise_peer_urls: https://10.5.1.202:2380
+  advertise_client_urls: https://10.5.1.201:2379
+  initial_advertise_peer_urls: https://10.5.1.201:2380
   listen_client_urls: https://0.0.0.0:2379
-  listen_peer_urls: https://10.5.1.202:2380
+  listen_peer_urls: https://10.5.1.201:2380
 #  discovery: https://discovery.etcd.io/8865a4e3fde9d6dca0d74628a2536998
   initial_cluster: etcd-1=https://10.5.1.201:2380,etcd-2=https://10.5.1.202:2380,etcd-3=https://10.5.1.203:2380
   initial_cluster_token: mytoken
   initial_cluster_state: new
   client_cert_auth: true
-  trusted_ca_file: /etc/ssl/certs/etcd-ca.pem
-  cert_file: /etc/ssl/certs/etcd-server.pem
-  key_file: /etc/ssl/certs/etcd-server-key.pem
+  trusted_ca_file: /etc/ssl/certs/ca.pem
+  cert_file: /etc/ssl/certs/server.pem
+  key_file: /etc/ssl/certs/server-key.pem
   peer_client_cert_auth: true
-  peer_trusted_ca_file: /etc/ssl/certs/etcd-ca.pem
-  peer_cert_file: /etc/ssl/certs/etcd-server.pem
-  peer_key_file: /etc/ssl/certs/etcd-server-key.pem
+  peer_trusted_ca_file: /etc/ssl/certs/ca.pem
+  peer_cert_file: /etc/ssl/certs/server.pem
+  peer_key_file: /etc/ssl/certs/server-key.pem
   auto_compaction_retention: 1
 
 update:
@@ -625,6 +361,6 @@ locksmith:
   window_start: Sun 1:00
   window_length: 2h
   etcd_endpoints: https://10.5.1.201:2379,https://10.5.1.202:2379,https://10.5.1.203:2379
-  etcd_cafile: /etc/ssl/certs/etcd-ca.pem
-  etcd_certfile: /etc/ssl/certs/etcd-client.pem
-  etcd_keyfile: /etc/ssl/certs/etcd-client-key.pem
+  etcd_cafile: /etc/ssl/certs/ca.pem
+  etcd_certfile: /etc/ssl/certs/client.pem
+  etcd_keyfile: /etc/ssl/certs/client-key.pem

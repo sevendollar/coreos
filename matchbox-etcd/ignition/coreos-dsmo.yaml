@@ -5,14 +5,14 @@ passwd:
       password_hash: "$1$linux$Jkofsu0Cak8oAy8lOAOPB0"
       ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAP6OO9UCi9a4KJZ4ikZFmxmk9IJLSXIeBVBBd/z+hxwH1L42+O6LUimMsVW9f2KS2//2i7BgAJFe93XxXr8EfCC+nTOORFMGP3copkvDp57Kofu+Tfb/DAcSyYPT3K4ilMv/j4CW/RiBgG/YAsSUeEbO+i5S8YolR/CdK0awGx6Q4DcX2yrOECfv+hv2Fq4UyVdaURSo8jtFhD3AfY50eb5G11SWbwqz0wDJV2Xlhb2UykjPEbCwSsYMurU6FYbFlOzRKUs1c5R+OD11dk2uwLSdM6L1ZVcleLo8hsaB0Zw3Pkj1sPxiGHITHGUxr4weUJjlYdTyXaXy9fowBIcS3 jeffl@jumper-amc
-    - name: jeffl
-      password_hash: "$1$linux$Jkofsu0Cak8oAy8lOAOPB0"
-      ssh_authorized_keys:
-        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAP6OO9UCi9a4KJZ4ikZFmxmk9IJLSXIeBVBBd/z+hxwH1L42+O6LUimMsVW9f2KS2//2i7BgAJFe93XxXr8EfCC+nTOORFMGP3copkvDp57Kofu+Tfb/DAcSyYPT3K4ilMv/j4CW/RiBgG/YAsSUeEbO+i5S8YolR/CdK0awGx6Q4DcX2yrOECfv+hv2Fq4UyVdaURSo8jtFhD3AfY50eb5G11SWbwqz0wDJV2Xlhb2UykjPEbCwSsYMurU6FYbFlOzRKUs1c5R+OD11dk2uwLSdM6L1ZVcleLo8hsaB0Zw3Pkj1sPxiGHITHGUxr4weUJjlYdTyXaXy9fowBIcS3 jeffl@jumper-amc
+    - name: dsmo
       create:
+        home_dir: /home/dsmo
         groups:
-          - sudo
           - docker
+        shell: /bin/bash
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA9rGO91DSAF2LwjrkyCwSiekXDVVa9VZAQ9natiXjAp1/V1P0LiFFgjTLCVAZm3kt+DvlKapXy2sIxG3wSadPkJXdeOn+0Oa/Zl67AUVj35UoidayHC9GJisrNxAkQDvVwQEShHB4mNQVJz4SoANiioSFGrWzoB6ou5iG9rtw6ZMPkOK3/ehzT7l8+Lu8eZ1YO3neWNZayeG9eQHlBZ2LGtBac21pB8t6PpuOeOGY3C5vKLMCo+XV+4U21lslIoHy56dyQyAk2Yj4n6ac7W1fiIbWBHG7AJcsE+VFsKWaTddK4pKovPQq5Pe6I8S8VxNC+hSrFfZIN+kn4s2WmYK/Aw== rsa-key-20171020
 
 storage:
   filesystems:
@@ -25,6 +25,12 @@ storage:
           options:
             - -L
             - ROOT
+  files:
+    - filesystem: filesystem1
+      path: /etc/hostname
+      contents:
+        inline: coreos-dsmo
+      mode: 0420
 
 networkd:
   units:
@@ -35,4 +41,6 @@ networkd:
 
         [Network]
         DNS=10.5.15.106
-        DHCP=yes
+        Domains=cvl.com.tw
+        Address=10.5.1.112/24
+        Gateway=10.5.1.254
