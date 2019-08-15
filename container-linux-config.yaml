@@ -1,7 +1,7 @@
 passwd:
   users:
     - name: jeffl
-      password_hash: "$1$linux$Jkofsu0Cak8oAy8lOAOPB0"
+      password_hash: "$6$rounds=4096$YmQ/Pl3XO6$BYgiJ1cmFASrnP6rBlyBfizRfucqBfhA8lIi4vMAiM3OErfhE8iP6KuHuF8pV1oSGg6OcUn6X9Xdq6/ayLbkO1"
       ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRcJWlhZTxUNxYVGvVhqkTD2+NyIi6wASdoqm+jfQkF2lnxKROVpODCZ9Yw7J6/V0dQZDc58vAm+tExySB4qkXpvTR0pUrtDZDu0ZiX9E1ErsW14JZKsUCJbJ9z5L41eI13k637vD+o3QGCM7OkdDc0wn8w089EPEcTVXjLhKEtzU6dwkas59mklQNzL4CfaoIFG7nqzuh12nCsXMmrSoP50Crywor4Xu9vgkNse60NENO4uwsrlvEL5sOPGOe1vbEaX8DTkjjA6SVoxKklzSQApZLzQR76ZnQPrAP8ut9qCavJcEV5r14GOBrL1qm0Wz9fBaf3aTBXzI5LZMTT3fz Jeff@Jeffs-MacBook-Air.local
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAP6OO9UCi9a4KJZ4ikZFmxmk9IJLSXIeBVBBd/z+hxwH1L42+O6LUimMsVW9f2KS2//2i7BgAJFe93XxXr8EfCC+nTOORFMGP3copkvDp57Kofu+Tfb/DAcSyYPT3K4ilMv/j4CW/RiBgG/YAsSUeEbO+i5S8YolR/CdK0awGx6Q4DcX2yrOECfv+hv2Fq4UyVdaURSo8jtFhD3AfY50eb5G11SWbwqz0wDJV2Xlhb2UykjPEbCwSsYMurU6FYbFlOzRKUs1c5R+OD11dk2uwLSdM6L1ZVcleLo8hsaB0Zw3Pkj1sPxiGHITHGUxr4weUJjlYdTyXaXy9fowBIcS3 jeffl@jumper-amc
@@ -14,7 +14,7 @@ passwd:
         shell: /bin/bash
 
     - name: core
-      password_hash: "$1$linux$Jkofsu0Cak8oAy8lOAOPB0"
+      password_hash: "$6$rounds=4096$YmQ/Pl3XO6$BYgiJ1cmFASrnP6rBlyBfizRfucqBfhA8lIi4vMAiM3OErfhE8iP6KuHuF8pV1oSGg6OcUn6X9Xdq6/ayLbkO1"
       ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRcJWlhZTxUNxYVGvVhqkTD2+NyIi6wASdoqm+jfQkF2lnxKROVpODCZ9Yw7J6/V0dQZDc58vAm+tExySB4qkXpvTR0pUrtDZDu0ZiX9E1ErsW14JZKsUCJbJ9z5L41eI13k637vD+o3QGCM7OkdDc0wn8w089EPEcTVXjLhKEtzU6dwkas59mklQNzL4CfaoIFG7nqzuh12nCsXMmrSoP50Crywor4Xu9vgkNse60NENO4uwsrlvEL5sOPGOe1vbEaX8DTkjjA6SVoxKklzSQApZLzQR76ZnQPrAP8ut9qCavJcEV5r14GOBrL1qm0Wz9fBaf3aTBXzI5LZMTT3fz Jeff@Jeffs-MacBook-Air.local
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAP6OO9UCi9a4KJZ4ikZFmxmk9IJLSXIeBVBBd/z+hxwH1L42+O6LUimMsVW9f2KS2//2i7BgAJFe93XxXr8EfCC+nTOORFMGP3copkvDp57Kofu+Tfb/DAcSyYPT3K4ilMv/j4CW/RiBgG/YAsSUeEbO+i5S8YolR/CdK0awGx6Q4DcX2yrOECfv+hv2Fq4UyVdaURSo8jtFhD3AfY50eb5G11SWbwqz0wDJV2Xlhb2UykjPEbCwSsYMurU6FYbFlOzRKUs1c5R+OD11dk2uwLSdM6L1ZVcleLo8hsaB0Zw3Pkj1sPxiGHITHGUxr4weUJjlYdTyXaXy9fowBIcS3 jeffl@jumper-amc
@@ -35,7 +35,7 @@ storage:
     - filesystem: filesystem1
       path: /etc/hostname
       contents:
-        inline: jumper-taiping
+        inline: coreos-temp
       mode: 0420
 
 networkd:
@@ -46,7 +46,5 @@ networkd:
         Name=ens*
 
         [Network]
-        DNS=10.5.15.106
-        Address=10.5.1.65/24
-        Gateway=10.5.1.254
+	DHCP=yes
 
