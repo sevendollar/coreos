@@ -35,15 +35,24 @@ storage:
     - filesystem: filesystem1
       path: /etc/hostname
       contents:
-        inline: coreos-temp
+        inline: coreos-template
       mode: 0420
 
 networkd:
   units:
-    - name: static.network
+    - name: 10-dhcp.network
       contents: |
         [Match]
         Name=ens*
 
         [Network]
         DHCP=yes
+    - name: 20-static.network
+      contents: |
+        [Match]
+        Name=ens*
+
+        [Network]
+        Address=10.7.12.65/24
+        Gateway=10.7.12.254
+        DNS=8.8.8.8
